@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>MicroFluid Application</title>
+</head>
+
+<style>
+    body {
+        background-color: #484848;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        color: #000000;
+        text-align: center;
+        font-family: "SIMPSON";
+    }
+
+    form {
+        width: 300px;
+        margin: 0 auto;
+    }
+
+    .img-container {
+        text-align: center;
+        display: block;
+    }
+</style>
+
+<body>
+    <p>
+    <h1>Microfluidics Length Measure App</h1>
+    </p>
+    <div id="wrapper">
+        <form enctype="multipart/form-data" action="/upload" method="post">
+            File: <input type="file" name="file1" onchange="preview_image(event)" />
+            <br />
+            <br />
+            <input type="submit" value="upload" />
+        </form>
+        <div class="img-container">
+            <!-- Block parent element -->
+            <br>
+            <img id="output_image" />
+        </div>
+    </div>
+</body>
+
+<script type='text/javascript'>
+    function preview_image(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('output_image');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+
+
+</html>
